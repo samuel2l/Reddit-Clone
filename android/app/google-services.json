@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "393420910142",
+    "project_id": "news-3d5f9",
+    "storage_bucket": "news-3d5f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393420910142:android:c8134da1c0f1ba9a5a2b6f",
+        "android_client_info": {
+          "package_name": "com.example.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393420910142-19o4o10mj56sj14e2gs2g1t5g2js8me2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.news",
+            "certificate_hash": "19798a53be26a6f51c83d1ce26911de42ee93e22"
+          }
+        },
+        {
+          "client_id": "393420910142-n4ch800pmubrsmbrla1m3mhtg9as9pbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0f014YCOuvZP4qBjpY2ZngbJRapE9d3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393420910142-n4ch800pmubrsmbrla1m3mhtg9as9pbn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "393420910142-2hdtrb4aiftsv3d4mci239lje6rdchoc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.reddit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393420910142:android:65d52e3e638c9a7f5a2b6f",
+        "android_client_info": {
+          "package_name": "com.example.reddit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393420910142-n4ch800pmubrsmbrla1m3mhtg9as9pbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0f014YCOuvZP4qBjpY2ZngbJRapE9d3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393420910142-n4ch800pmubrsmbrla1m3mhtg9as9pbn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "393420910142-2hdtrb4aiftsv3d4mci239lje6rdchoc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.reddit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
