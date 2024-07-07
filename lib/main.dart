@@ -28,7 +28,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   void getData(WidgetRef ref, User data) async {
     userModel = await ref
         .watch(authControllerProvider.notifier)
-        .getUserData(data.uid)
+        .getUserData(data.uid)          
         .first;
     ref.read(userProvider.notifier).update((state) => userModel);
     setState(() {});
@@ -51,7 +51,9 @@ class _MyAppState extends ConsumerState<MyApp> {
           }),
           routeInformationParser: const RoutemasterParser(),
           title: 'Reddit',
+          
           theme: Pallete.darkModeAppTheme,
+        
         );
       },
       error: (error, stackTrace) => Center(

@@ -90,7 +90,7 @@ class AuthRepo {
       } else {
         userModel = await getUserData(userCredential.user!.uid).first;
       }
-      return right(userModel!);
+      return right(userModel);
     } on FirebaseException catch (e) {
       throw e.message!;
     } catch (e) {
@@ -98,7 +98,7 @@ class AuthRepo {
     }
   }
 
-  Stream<UserModel?> getUserData(String uid) {
+  Stream<UserModel> getUserData(String uid) {
     //its of type Stream so we can persist the state
     return _users.doc(uid).snapshots().map(
         (event) {
