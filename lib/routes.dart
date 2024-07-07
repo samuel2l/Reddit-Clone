@@ -1,6 +1,7 @@
 //so we will create 2 main routes for when a user is logged in or not showing the pages that can be accessed by such a user
 //the ease with which we can do this using route master is why it was chosen
 import 'package:flutter/material.dart';
+import 'package:reddit/features/community/screens/create_community.dart';
 import 'package:reddit/features/home/screens/home.dart';
 import 'package:reddit/features/auth/screens/login.dart';
 import 'package:routemaster/routemaster.dart';
@@ -15,5 +16,6 @@ final loggedOutRoutes = RouteMap(routes: {
 //but shows home screen when logged in
 final loggedInRoutes = RouteMap(routes: {
   '/':(_)=>const MaterialPage(child:HomeScreen()),
+    '/create-community':(_)=>const MaterialPage(child:CreateCommunity()),
   
 });
