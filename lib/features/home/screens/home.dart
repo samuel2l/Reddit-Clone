@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
-import 'package:reddit/home/drawers/community_list.dart';
+import 'package:reddit/features/home/drawers/community_list.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
