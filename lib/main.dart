@@ -11,8 +11,14 @@ import 'package:routemaster/routemaster.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(ProviderScope(child: MyApp()));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerStatefulWidget {
@@ -24,42 +30,37 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   UserModel? userModel;
-  
+
   void getData(WidgetRef ref, User data) async {
     userModel = await ref
         .watch(authControllerProvider.notifier)
-        .getUserData(data.uid)          
+        .getUserData(data.uid)
         .first;
     ref.read(userProvider.notifier).update((state) => userModel);
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return ref.watch(authStateChangeProvider).when(
-      data: (data) {
-        if (data != null && userModel == null) {
-          getData(ref, data);
-        }
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
-            if (data == null || userModel == null) {
-              return loggedOutRoutes;
-            }
-            return loggedInRoutes;
-          }),
-          routeInformationParser: const RoutemasterParser(),
-          title: 'Reddit',
-          
-          theme: Pallete.darkModeAppTheme,
-        
+          data: (data) => MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: 'Reddit Tutorial',
+
+            routerDelegate: RoutemasterDelegate(
+              routesBuilder: (context) {
+                if (data != null) {
+                  getData(ref, data);
+                  if (userModel != null) {
+                    return loggedInRoutes;
+                  }
+                }
+                return loggedOutRoutes;
+              },
+            ),
+            routeInformationParser: const RoutemasterParser(),
+          ),
+          error: (error, stackTrace) =>Center(child: Text(error.toString()),),
+          loading: () => const CircularProgressIndicator(),
         );
-      },
-      error: (error, stackTrace) => Center(
-        child: Text(error.toString()),
-      ),
-      loading: () => const CircularProgressIndicator(),
-    );
   }
 }

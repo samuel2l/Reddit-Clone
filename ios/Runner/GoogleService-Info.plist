@@ -31,6 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:393420910142:ios:7ba195b579a8b0b65a2b6f</string>
+		<string>com.googleusercontent.apps.393420910142-l01rbjml2kv8lfg19br0vsovkjopdvgq</string>
+
 </dict>
 </plist>

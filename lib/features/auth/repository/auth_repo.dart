@@ -102,7 +102,7 @@ class AuthRepo {
     //its of type Stream so we can persist the state
     return _users.doc(uid).snapshots().map(
         (event) {
-print(event.data());
+print( event.data());
         return UserModel.fromMap(event.data() as Map<String, dynamic>);
 
         });
