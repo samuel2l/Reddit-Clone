@@ -11,6 +11,7 @@ class UserModel {
   final bool isUser;
   final int karma;
   final List<String> awards;
+
   UserModel({
     required this.name,
     required this.dp,
@@ -20,7 +21,6 @@ class UserModel {
     required this.karma,
     required this.awards,
   });
-  
 
   UserModel copyWith({
     String? name,
@@ -62,7 +62,7 @@ class UserModel {
       uId: map['uId'] as String,
       isUser: map['isUser'] as bool,
       karma: map['karma'] as int,
-      awards: List<String>.from((map['awards'] as List<String>)),
+      awards: List<String>.from(map['awards'] ?? []),
     );
   }
 

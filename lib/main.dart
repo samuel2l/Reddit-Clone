@@ -30,37 +30,51 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   UserModel? userModel;
+  bool isLoading = false;
 
-  void getData(WidgetRef ref, User data) async {
+  Future<void> getData(WidgetRef ref, User data) async {
+    setState(() {
+      isLoading = true;
+    });
     userModel = await ref
         .watch(authControllerProvider.notifier)
         .getUserData(data.uid)
         .first;
     ref.read(userProvider.notifier).update((state) => userModel);
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return ref.watch(authStateChangeProvider).when(
-          data: (data) => MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: 'Reddit Tutorial',
+      data: (data) {
+        if (data != null && userModel == null && !isLoading) {
+          // Fetch user data only if it's not already fetched and not currently loading
+          getData(ref, data);
+        }
 
-            routerDelegate: RoutemasterDelegate(
-              routesBuilder: (context) {
-                if (data != null) {
-                  getData(ref, data);
-                  if (userModel != null) {
-                    return loggedInRoutes;
-                  }
-                }
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: 'Reddit Tutorial',
+          routerDelegate: RoutemasterDelegate(
+            routesBuilder: (context) {
+              if (data != null && userModel != null) {
+                // User is signed in and user data is fetched
+                print('USER NOT NULL');
+                return loggedInRoutes;
+              } else {
+                // User is not signed in
                 return loggedOutRoutes;
-              },
-            ),
-            routeInformationParser: const RoutemasterParser(),
+              }
+            },
           ),
-          error: (error, stackTrace) =>Center(child: Text(error.toString()),),
-          loading: () => const CircularProgressIndicator(),
+          routeInformationParser: const RoutemasterParser(),
         );
+      },
+      error: (error, stackTrace) => Center(child: Text(error.toString())),
+      loading: () => const Center(child: CircularProgressIndicator()),
+    );
   }
 }
