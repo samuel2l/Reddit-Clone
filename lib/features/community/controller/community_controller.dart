@@ -7,6 +7,10 @@ import 'package:reddit/features/models/community_model.dart';
 import 'package:reddit/utils.dart';
 import 'package:routemaster/routemaster.dart';
 
+final communityControllerProvider=StateNotifierProvider<CommunityController,bool>((ref){
+  return CommunityController(communityRespository: ref.watch(communityRepoProvider), ref: ref);
+});
+
 class CommunityController extends StateNotifier<bool>{
   final CommunityRespository _communityRespository;
   final Ref _ref;

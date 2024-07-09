@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reddit/features/community/controller/community_controller.dart';
 
 class CreateCommunity extends ConsumerStatefulWidget {
   const CreateCommunity({super.key});
@@ -10,10 +11,23 @@ class CreateCommunity extends ConsumerStatefulWidget {
 
 class _CreateCommunityState extends ConsumerState<CreateCommunity> {
   final communityNameController=TextEditingController();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    communityNameController.dispose();
+  }
+
+  void createCommunity(){
+    ref.read(communityControllerProvider.notifier).createCommunity(communityNameController.text.trim(), context);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: 
+    final isLoading=ref.watch(communityControllerProvider);
+    return isLoading? const Center(
+      child: CircularProgressIndicator(),
+    ) :SafeArea(child: 
     Scaffold(appBar: AppBar(title:const Text('Create Community'),
    
     ),
@@ -36,7 +50,8 @@ class _CreateCommunityState extends ConsumerState<CreateCommunity> {
 
           ),
           const SizedBox(height:20),
-          TextButton(onPressed: (){}, child: const Text(''))
+          TextButton(onPressed:createCommunity,
+          child: const Text('Create Community'))
           
                   ],
       ),
