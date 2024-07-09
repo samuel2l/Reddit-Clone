@@ -27,7 +27,16 @@ try{
 }
   
 }
-
+Stream<List<Community>> getUserCommunities(String uid){
+  //the .snapshots returns stream of query obj. so we map elements in that stream to our user community model
+  return _communities.where('members',arrayContains: uid).snapshots().map((event){
+    List<Community> communities=[];
+    for(var doc in event.docs){
+      communities.add(Community.fromMap(doc.data() as Map<String,dynamic>));
+    }
+    return communities;
+  });
+}
 CollectionReference get _communities=>_firestore.collection(FirebaseConstants.communitiesCollection);
 
 }

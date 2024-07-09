@@ -30,4 +30,10 @@ res.fold((l) => showSnackBar(context,l.message), (r) {
 });
 }
 
+Stream<List<Community>> getUserCommunities(String uid){
+  final uid=_ref.read(userProvider)!.uId;
+  return _communityRespository.getUserCommunities(uid);
+  }
+
+
 }
