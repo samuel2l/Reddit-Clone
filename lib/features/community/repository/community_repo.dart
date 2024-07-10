@@ -27,14 +27,20 @@ try{
 }
   
 }
+
+Stream<Community> getCommunity(String name){
+  return _communities.doc(name).snapshots().map((event)=>Community.fromMap(event.data() as Map<String,dynamic>));
+}
 Stream<List<Community>> getUserCommunities(String uid){
   //the .snapshots returns stream of query obj. so we map elements in that stream to our user community model
   return _communities.where('members',arrayContains: uid).snapshots().map((event){
+    print('_communities.where(members,arrayContains: uid).snapshots()');
+    print(_communities.where('members',arrayContains: uid).snapshots());
     List<Community> communities=[];
     for(var doc in event.docs){
       communities.add(Community.fromMap(doc.data() as Map<String,dynamic>));
       print('a doc: ');
-      print(doc);
+      print(doc.data());
     }
     print(communities);
     return communities;
