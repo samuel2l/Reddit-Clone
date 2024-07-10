@@ -21,9 +21,16 @@ void NavigateToCreateCommunity(context){
             } ,
 
           ),
-          ref.watch(userCommunitiesProvider).when(data:(data)=> ListView.builder(itemCount: data.length,itemBuilder: (context, index) {
-            return ListTile(title: Text('${data[index].name}'),);
-          }, ), error:(error,stackTrace){
+          ref.watch(userCommunitiesProvider).when(data:(data)=> Expanded(
+            child: ListView.builder(itemCount: data.length,itemBuilder: (context, index) {
+              return ListTile(title: Text('r/${data[index].name}'),
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(data[index].dp),
+              ),
+              onTap: (){},
+              );
+            }, ),
+          ), error:(error,stackTrace){
             return Center(
               child: Text(error.toString()),
             );
