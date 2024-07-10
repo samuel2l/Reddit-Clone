@@ -33,7 +33,10 @@ Stream<List<Community>> getUserCommunities(String uid){
     List<Community> communities=[];
     for(var doc in event.docs){
       communities.add(Community.fromMap(doc.data() as Map<String,dynamic>));
+      print('a doc: ');
+      print(doc);
     }
+    print(communities);
     return communities;
   });
 }

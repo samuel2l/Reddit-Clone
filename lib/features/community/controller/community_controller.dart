@@ -7,6 +7,11 @@ import 'package:reddit/features/models/community_model.dart';
 import 'package:reddit/utils.dart';
 import 'package:routemaster/routemaster.dart';
 
+final userCommunitiesProvider= StreamProvider((ref){
+  return ref.watch(communityControllerProvider.notifier).getUserCommunities();
+});
+
+
 final communityControllerProvider=StateNotifierProvider<CommunityController,bool>((ref){
   return CommunityController(communityRespository: ref.watch(communityRepoProvider), ref: ref);
 });
@@ -30,7 +35,7 @@ res.fold((l) => showSnackBar(context,l.message), (r) {
 });
 }
 
-Stream<List<Community>> getUserCommunities(String uid){
+Stream<List<Community>> getUserCommunities(){
   final uid=_ref.read(userProvider)!.uId;
   return _communityRespository.getUserCommunities(uid);
   }
