@@ -7,7 +7,7 @@ import 'package:reddit/features/models/community_model.dart';
 import 'package:reddit/utils.dart';
 import 'package:routemaster/routemaster.dart';
 
-final userCommunitiesProvider= StreamProvider((ref){
+final userCommunitiesProvider= StreamProvider<List<Community>>((ref){
   return ref.watch(communityControllerProvider.notifier).getUserCommunities();
 });
 

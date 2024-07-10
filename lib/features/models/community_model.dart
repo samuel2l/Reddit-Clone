@@ -50,15 +50,15 @@ class Community {
     };
   }
 
-  factory Community.fromMap(Map<String, dynamic> map) {
+factory Community.fromMap(Map<String, dynamic> map) {
     return Community(
       id: map['id'] as String,
       name: map['name'] as String,
       banner: map['banner'] as String,
       dp: map['dp'] as String,
-      members: List<String>.from(map['members'] as List<String>),
-      mods: List<String>.from((map['mods'] as List<String>),
-    ));
+      members: List<String>.from(map['members']),
+      mods: List<String>.from(map['mods']),
+    );
   }
 
   @override
