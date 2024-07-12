@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/community/controller/community_controller.dart';
 
 class CommunityScreen extends ConsumerWidget {
@@ -8,6 +9,7 @@ class CommunityScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userProvider)!;
     return SafeArea(child: 
     Scaffold(
       body: ref.watch(getCommunityProvider(name)).when(data: (data){
@@ -46,6 +48,7 @@ class CommunityScreen extends ConsumerWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              data.mods.contains(user.uId)?
 OutlinedButton(
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -54,15 +57,25 @@ OutlinedButton(
                                           ),
                                           padding: const EdgeInsets.symmetric(horizontal: 25),
                                         ),
-                                        child: Text('Join'),
+                                        child: const Text('Mod Tools'),
+                                      ):OutlinedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(horizontal: 25),
+                                        ),
+                                        child: const Text('Join'),
                                       ),
+                                      Padding(padding: const EdgeInsets.only(top:10),
+                                      child: Text('${data.members.length} members '),
+                                        )
                           ],
-                          ),
-                          
+                          ),                         
                           ],
                           ),
                           ),)
-
 
           ];
         }, body: Container());
