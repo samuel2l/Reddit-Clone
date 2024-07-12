@@ -66,7 +66,7 @@ OutlinedButton(
                                           ),
                                           padding: const EdgeInsets.symmetric(horizontal: 25),
                                         ),
-                                        child: const Text('Join'),
+                                        child: Text(data.members.contains(user.uId)?'Joined':'Join'),
                                       ),
                                       Padding(padding: const EdgeInsets.only(top:10),
                                       child: Text('${data.members.length} members '),
