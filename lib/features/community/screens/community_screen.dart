@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/community/controller/community_controller.dart';
+import 'package:routemaster/routemaster.dart';
+
 
 class CommunityScreen extends ConsumerWidget {
   final String name;
   const CommunityScreen( {required this.name,super.key});
-
+void navigateToModTools(BuildContext context){
+  Routemaster.of(context).push('/mod-tools');
+}
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
@@ -50,7 +54,9 @@ class CommunityScreen extends ConsumerWidget {
                               ),
                               data.mods.contains(user.uId)?
 OutlinedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          navigateToModTools(context);
+                                        },
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(20),

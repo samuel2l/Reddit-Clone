@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:reddit/features/community/screens/community_screen.dart';
 import 'package:reddit/features/community/screens/create_community.dart';
+import 'package:reddit/features/community/screens/mode_tools.dart';
 import 'package:reddit/features/home/screens/home.dart';
 import 'package:reddit/features/auth/screens/login.dart';
 import 'package:routemaster/routemaster.dart';
@@ -22,5 +23,6 @@ final loggedInRoutes = RouteMap(routes: {
     '/r/:name':(route)=> MaterialPage(child:CommunityScreen(
       name: route.pathParameters['name']!,
     )),
+    '/mod-tools':(_)=>const MaterialPage(child:ModTools())
   
 });
