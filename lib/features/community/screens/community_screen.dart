@@ -9,7 +9,7 @@ class CommunityScreen extends ConsumerWidget {
   final String name;
   const CommunityScreen( {required this.name,super.key});
 void navigateToModTools(BuildContext context){
-  Routemaster.of(context).push('/mod-tools');
+  Routemaster.of(context).push('/mod-tools/$name');
 }
   @override
   Widget build(BuildContext context, WidgetRef ref) {

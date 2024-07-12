@@ -57,6 +57,7 @@ class _MyAppState extends ConsumerState<MyApp> {
 
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark(),
           title: 'Reddit Tutorial',
           routerDelegate: RoutemasterDelegate(
             routesBuilder: (context) {
@@ -75,6 +76,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       },
       error: (error, stackTrace) => Center(child: Text(error.toString())),
       loading: () => const Center(child: CircularProgressIndicator()),
+      
     );
   }
 }
