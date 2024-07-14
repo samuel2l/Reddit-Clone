@@ -29,23 +29,39 @@ class _EditCommunityState extends ConsumerState<EditCommunity> {
       ),
       body:  Padding(
         padding: const EdgeInsets.only(left:6,right:6,top:6),
-        child: Column(
-          children: [
-            DottedBorder(radius: const Radius.circular(10),dashPattern:const [10,4],
-            strokeCap: StrokeCap.round,
-            color: Colors.white,
-
-            child: Container(
+        child: SizedBox(
+          //give stack height to position the dp better
+          
+          height:200,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  DottedBorder(borderType: BorderType.RRect,radius: const Radius.circular(10),dashPattern:const [10,4],
+                  strokeCap: StrokeCap.round,
+                  color: Colors.white,
               
-              height: 130,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7)
+                  child: Container(
+                    
+                    height: 150,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7)
+                    ),
+                    child: data.banner.isEmpty || data.banner==bannerDefault? const Center(child: Icon(Icons.camera_alt_outlined,size: 40,),) : Image.network(data.banner),
+                  ),
+                  ),
+                ],
               ),
-              child: data.banner.isEmpty || data.banner==bannerDefault? const Center(child: Icon(Icons.camera_alt_outlined,size: 40,),) : Image.network(data.banner),
-            ),
-            ),
-          ],
+              Positioned(
+                left: 20,
+                bottom: 20,
+                child: CircleAvatar(backgroundImage: NetworkImage(data.dp),
+                          radius: 42,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     ));
