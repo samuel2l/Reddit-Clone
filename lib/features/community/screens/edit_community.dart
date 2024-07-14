@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/constants/constants.dart';
 import 'package:reddit/features/community/controller/community_controller.dart';
+import 'package:reddit/features/models/community_model.dart';
 import 'package:reddit/themes/pallette.dart';
 import 'package:reddit/utils.dart';
 
@@ -18,6 +18,7 @@ class EditCommunity extends ConsumerStatefulWidget {
 }
 
 class _EditCommunityState extends ConsumerState<EditCommunity> {
+  
 File? bannerImg;
 File? dp;
 
@@ -39,9 +40,13 @@ void pickDp()async{
   }
 
 }
+void save(WidgetRef ref,Community community,BuildContext context){
+  ref.read(communityControllerProvider.notifier).editCommunity(community: community, banner: bannerImg, dp: dp, context: context);
 
+}
   @override
   Widget build(BuildContext context) {
+    
     return ref.watch(getCommunityProvider(widget.name)).when(data: (data){
       return SafeArea(child: Scaffold(
       backgroundColor: Pallete.darkModeAppTheme.dialogBackgroundColor,
@@ -49,7 +54,7 @@ void pickDp()async{
         title: const Text('Edit Community'),
         centerTitle: false,
         actions: [
-          TextButton(onPressed: (){}, child: const Text('Save')),
+          TextButton(onPressed:()=> save(ref,data,context), child: const Text('Save')),
         ],
       ),
       body:  Padding(
@@ -103,7 +108,7 @@ radius: 32,
       ),
     ));
 
-    }, error: (error,stackTrace)=>Text(error.toString()), loading: ()=>Center(child:CircularProgressIndicator()),
+    }, error: (error,stackTrace)=>Text(error.toString()), loading: ()=>const Center(child:CircularProgressIndicator()),
     );
        }
 }
