@@ -53,17 +53,57 @@ Stream<List<Community>> getUserCommunities(){
   return _communityRespository.getUserCommunities(uid);
   }
 
-void editCommunity({required Community community,required File? banner,required File? dp,required BuildContext context})async{
- if(dp!=null){
-  final res=await _storageRepository.storeFile(path: 'communities/profile', id: community.name, file: dp);
- res.fold((l) => showSnackBar(context, l.message), (r) => community.copyWith(dp:r))
-; }
-if(banner!=null){
-  final res=await _storageRepository.storeFile(path: 'communities/profile', id: community.name, file: banner);
- res.fold((l) => showSnackBar(context, l.message), (r) => community.copyWith(banner:r))
-; }
-final res=await _communityRespository.editCommunity(community);
- res.fold((l) => showSnackBar(context, l.message), (r) => Routemaster.of(context).pop());
+void editCommunity({
+  required Community community,
+  required File? banner,
+  required File? dp,
+  required BuildContext context,
+}) async {
+  state = true;
+  String? dpUrl;
+  String? bannerUrl;
+
+  if (dp != null) {
+    final res = await _storageRepository.storeFile(
+      path: 'communities/profile',
+      id: community.name,
+      file: dp,
+    );
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) {
+        //if the file was successfully stored in firebase then set the dp url to the result
+        //the result,res, is basicaly the link to the dp hence the dp url
+        dpUrl = r;
+      },
+    );
+  }
+
+  if (banner != null) {
+    final res = await _storageRepository.storeFile(
+      path: 'communities/banner',
+      id: community.name,
+      file: banner,
+    );
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) {
+        bannerUrl = r;
+      },
+    );
+  }
+
+  final updatedCommunity = community.copyWith(
+    dp: dpUrl ?? community.dp,
+    banner: bannerUrl ?? community.banner,
+  );
+
+  final res = await _communityRespository.editCommunity(updatedCommunity);
+  state = false;
+  res.fold(
+    (l) => showSnackBar(context, l.message),
+    (r) => Routemaster.of(context).pop(),
+  );
 }
 }
 
