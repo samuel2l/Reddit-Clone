@@ -21,7 +21,7 @@ void joinComunity(WidgetRef ref,Community community,BuildContext context){
     final user = ref.watch(userProvider)!;
     return SafeArea(child: 
     Scaffold(
-      body: ref.watch(getCommunityProvider(name)).when(data: (data){
+      body: ref.watch(getCommunityProvider(name)).when(data: (community){
         return NestedScrollView(headerSliverBuilder: (context,innerBarIsScrolled){
           return [
             SliverAppBar(
@@ -30,7 +30,7 @@ void joinComunity(WidgetRef ref,Community community,BuildContext context){
               expandedHeight: 150,
               flexibleSpace: Stack(
                 children: [
-                  Positioned.fill(child: Image.network(data.banner,fit: BoxFit.cover,),),
+                  Positioned.fill(child: Image.network(community.banner,fit: BoxFit.cover,),),
                 ],
               ),
             ),
@@ -42,7 +42,7 @@ void joinComunity(WidgetRef ref,Community community,BuildContext context){
                           Align(
                             alignment: Alignment.topLeft,
                             child: CircleAvatar(
-                              backgroundImage: NetworkImage(data.dp),
+                              backgroundImage: NetworkImage(community.dp),
                               radius: 35,
                             ),
                           ),
@@ -51,13 +51,13 @@ void joinComunity(WidgetRef ref,Community community,BuildContext context){
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'r/${data.name}',
+                                'r/${community.name}',
                                 style: const TextStyle(
                                   fontSize: 19,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              data.mods.contains(user.uId)?
+                              community.mods.contains(user.uId)?
 OutlinedButton(
                                         onPressed: () {
                                           navigateToModTools(context);
@@ -71,8 +71,12 @@ OutlinedButton(
                                         child: const Text('Mod Tools'),
                                       ):OutlinedButton(
                                         onPressed: () {
+                                          community.members.contains(user.uId)?
+                                          //not sure if just nulling it will work
+                                          //logic here is me just ensuring that do nothing when button is taped if user is already inside the community 
+                                         null :joinComunity(ref, community, context);
 
-                                          joinComunity(ref, data, context);
+                                          
                                         },
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
@@ -80,10 +84,10 @@ OutlinedButton(
                                           ),
                                           padding: const EdgeInsets.symmetric(horizontal: 25),
                                         ),
-                                        child: Text(data.members.contains(user.uId)?'Joined':'Join'),
+                                        child: Text(community.members.contains(user.uId)?'Joined':'Join'),
                                       ),
                                       Padding(padding: const EdgeInsets.only(top:10),
-                                      child: Text('${data.members.length} members '),
+                                      child: Text('${community.members.length} members '),
                                         )
                           ],
                           ),                         

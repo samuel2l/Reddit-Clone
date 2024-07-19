@@ -33,9 +33,13 @@ void displayEndDrawer(BuildContext context) {
           IconButton(onPressed: (){
 showSearch(context: context, delegate: SearchCommunityDelegate(ref));
           }, icon:const Icon(Icons.search,)),
-          IconButton(icon: CircleAvatar(backgroundImage: NetworkImage(user.dp),),onPressed: (){
-            displayEndDrawer(context);
-          },)
+          Builder(
+            builder: (context) {
+              return IconButton(icon: CircleAvatar(backgroundImage: NetworkImage(user.dp),),onPressed:()=>
+                displayEndDrawer(context)
+              ,);
+            }
+          ),
           
         ],
         
