@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:reddit/constants/constants.dart';
+import 'package:reddit/failure.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/community/repository/community_repo.dart';
 import 'package:reddit/features/models/community_model.dart';
@@ -110,6 +112,26 @@ void editCommunity({
   Stream<List<Community>> searchCommunity(String query) {
     return _communityRespository.searchCommunity(query);
   }
+
+
+void joinCommunity(Community community,BuildContext context)async{
+  final user=_ref.read(userProvider)!;
+  Either<Failure,void> res;
+  if (community.members.contains(user.uId)){
+    res=await _communityRespository.leaveCommunity(community.name, user.uId as int);
+  }else{
+   res=await _communityRespository.joinCommunity(community.name, user.uId as int);
+    
+  }
+res.fold((l) => showSnackBar(context,l.message), (r) {
+if (community.members.contains(user.uId)){
+showSnackBar(context, 'Community joined successfully');
+}else{
+  showSnackBar(context, 'Community left successfully');
+}
+});
+
+}
 
 }
 
