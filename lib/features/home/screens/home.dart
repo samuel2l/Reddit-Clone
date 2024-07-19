@@ -34,6 +34,7 @@ void displayEndDrawer(BuildContext context) {
 showSearch(context: context, delegate: SearchCommunityDelegate(ref));
           }, icon:const Icon(Icons.search,)),
           Builder(
+            //wrapped with another builder cos there wa sinitial error of the 
             builder: (context) {
               return IconButton(icon: CircleAvatar(backgroundImage: NetworkImage(user.dp),),onPressed:()=>
                 displayEndDrawer(context)
