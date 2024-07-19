@@ -49,7 +49,7 @@ return ref.watch(searchCommunityProvider(query)).when(
         );
   }
 
-  void navigateToCommunity(BuildContext context, String communityName) {
+void navigateToCommunity(BuildContext context, String communityName) {
     Routemaster.of(context).push('/r/$communityName');
   }
 }

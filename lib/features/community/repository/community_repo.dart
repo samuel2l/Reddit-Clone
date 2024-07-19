@@ -13,7 +13,6 @@ final FirebaseFirestore _firestore;
 
   CommunityRespository({required FirebaseFirestore firestore}) : _firestore = firestore;
 
-
 FutureVoid createCommunity(Community community) async {
 try{
   var name= await _communities.doc(community.name).get();
