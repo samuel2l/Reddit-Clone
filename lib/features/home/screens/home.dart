@@ -3,11 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/home/delegates/search_community_delegates.dart';
 import 'package:reddit/features/home/drawers/community_list.dart';
+import 'package:reddit/features/home/drawers/user_profile.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 void displayDrawer(BuildContext context) {
   Scaffold.of(context).openDrawer();
+}
+void displayEndDrawer(BuildContext context) {
+  Scaffold.of(context).openEndDrawer();
 }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,13 +33,16 @@ void displayDrawer(BuildContext context) {
           IconButton(onPressed: (){
 showSearch(context: context, delegate: SearchCommunityDelegate(ref));
           }, icon:const Icon(Icons.search,)),
-          IconButton(icon: CircleAvatar(backgroundImage: NetworkImage(user.dp),),onPressed: (){},)
+          IconButton(icon: CircleAvatar(backgroundImage: NetworkImage(user.dp),),onPressed: (){
+            displayEndDrawer(context);
+          },)
           
         ],
         
 
       ),
       drawer: const CommunityList(),
+      endDrawer: const ProfileDrawer(),
       );
     
   }
