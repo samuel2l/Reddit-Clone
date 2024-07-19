@@ -11,7 +11,7 @@ final communityRepoProvider=Provider((ref) => CommunityRespository(firestore: re
 class CommunityRespository{
 final FirebaseFirestore _firestore;
 
-  CommunityRespository({required FirebaseFirestore firestore}) : _firestore = firestore;
+CommunityRespository({required FirebaseFirestore firestore}) : _firestore = firestore;
 
 FutureVoid createCommunity(Community community) async {
 try{
@@ -24,8 +24,7 @@ try{
   throw e.message!;
 }catch(e){
   return left(Failure(e.toString()));
-}
-  
+}  
 }
 
 Stream<Community> getCommunity(String name){
