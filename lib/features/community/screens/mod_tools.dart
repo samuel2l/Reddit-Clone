@@ -12,6 +12,10 @@ void navigateToEditScreen(context){
   Routemaster.of(context).push('/edit-community/$name');
 
 }
+void navigateToAddModsScreen(context){
+  Routemaster.of(context).push('/add-mods/$name');
+
+}
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +29,15 @@ void navigateToEditScreen(context){
           ListTile(leading: const Icon(Icons.add_moderator),
 
             title: const Text('Add mods'),
-            onTap: (){},
+            onTap: (){
+              navigateToAddModsScreen(context);
+            },
           ),
           ListTile(leading: const Icon(Icons.edit),
             title: const Text('Edit Community'),
             onTap: (){
               navigateToEditScreen(context);
+          
 
             },
           ),

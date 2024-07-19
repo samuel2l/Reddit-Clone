@@ -1,6 +1,7 @@
 //so we will create 2 main routes for when a user is logged in or not showing the pages that can be accessed by such a user
 //the ease with which we can do this using route master is why it was chosen
 import 'package:flutter/material.dart';
+import 'package:reddit/features/community/screens/add_mods.dart';
 import 'package:reddit/features/community/screens/community_screen.dart';
 import 'package:reddit/features/community/screens/create_community.dart';
 import 'package:reddit/features/community/screens/edit_community.dart';
@@ -27,6 +28,8 @@ final loggedInRoutes = RouteMap(routes: {
     '/mod-tools/:name':(routeData)=> MaterialPage(child:ModTools(name: routeData.pathParameters['name']!,),
     ),
     '/edit-community/:name':(routeData)=> MaterialPage(child:EditCommunity(name: routeData.pathParameters['name']!,),
+    ),
+    '/add-mods/:name':(routeData)=> MaterialPage(child:AddMods(name: routeData.pathParameters['name']!,),
     ),
   
 });

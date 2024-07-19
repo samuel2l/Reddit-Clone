@@ -55,8 +55,7 @@ class ProfileDrawer extends ConsumerWidget {
             ),
             Switch.adaptive(value: true, onChanged:(val){},)
           ],
-        ),
-      ),
+        ),),
     );
   }
 }
