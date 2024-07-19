@@ -75,6 +75,31 @@ Stream<List<Community>> searchCommunity(String query) {
   });
 }
 
+FutureVoid joinCommunity(String name,int uId)async{
+  try{
+    return right(_communities.doc(name).update({
+      'members':FieldValue.arrayUnion([uId])
+    }));
+
+  }on FirebaseException catch(e){
+    throw e.message!;
+  }catch(e){
+    return left(Failure(e.toString()));
+  }
+}
+FutureVoid leaveCommunity(String name,int uId)async{
+  try{
+    return right(_communities.doc(name).update({
+      'members':FieldValue.arrayRemove([uId])
+    }));
+
+  }on FirebaseException catch(e){
+    throw e.message!;
+  }catch(e){
+    return left(Failure(e.toString()));
+  }
+}
+
 CollectionReference get _communities=>_firestore.collection(FirebaseConstants.communitiesCollection);
 
 }

@@ -49,10 +49,11 @@ class ProfileDrawer extends ConsumerWidget {
               title: const Text('Log Out'),
               leading: const Icon(
                 Icons.logout,
-
               ),
               onTap: () => signOut(ref),
+
             ),
+            Switch.adaptive(value: true, onChanged:(val){},)
           ],
         ),
       ),
