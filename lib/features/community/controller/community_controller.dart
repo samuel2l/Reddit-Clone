@@ -14,7 +14,9 @@ import 'package:routemaster/routemaster.dart';
 final userCommunitiesProvider= StreamProvider<List<Community>>((ref){
   return ref.watch(communityControllerProvider.notifier).getUserCommunities();
 });
-
+final searchCommunityProvider = StreamProvider.family((ref, String query) {
+  return ref.watch(communityControllerProvider.notifier).searchCommunity(query);
+});
 
 final communityControllerProvider=StateNotifierProvider<CommunityController,bool>((ref){
   return CommunityController(communityRespository: ref.watch(communityRepoProvider), ref: ref,storageRepository: ref.watch(firebaseStorageProvider));
@@ -105,5 +107,9 @@ void editCommunity({
     (r) => Routemaster.of(context).pop(),
   );
 }
+  Stream<List<Community>> searchCommunity(String query) {
+    return _communityRespository.searchCommunity(query);
+  }
+
 }
 
