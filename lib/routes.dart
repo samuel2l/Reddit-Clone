@@ -8,6 +8,7 @@ import 'package:reddit/features/community/screens/edit_community.dart';
 import 'package:reddit/features/community/screens/mod_tools.dart';
 import 'package:reddit/features/home/screens/home.dart';
 import 'package:reddit/features/auth/screens/login.dart';
+import 'package:reddit/features/user%20profile/screens/user_profile.dart';
 import 'package:routemaster/routemaster.dart';
 
 final loggedOutRoutes = RouteMap(routes: {
@@ -31,5 +32,6 @@ final loggedInRoutes = RouteMap(routes: {
     ),
     '/add-mods/:name':(routeData)=> MaterialPage(child:AddMods(name: routeData.pathParameters['name']!,),
     ),
-  
+     '/u/:uId':(routeData)=> MaterialPage(child:ProfileScreen(uId: routeData.pathParameters['uId']!,),
+    ),
 });
