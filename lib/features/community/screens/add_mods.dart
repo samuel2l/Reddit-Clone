@@ -15,8 +15,11 @@ final String name;
 }
 class _AddModsState extends ConsumerState<AddMods> {
   Set<String> uIds={};
-  //add a counter so you can select and deselect
+  //add a counter so you can select and deselect already existing mods
   //logic is so when build func re runs when you call set state the users id is not added to uids set unless the count is at 0
+  //without this when you try to remove a mod the removemod fucntion calls setstate causing the whole tree to be rebuilt and this line of code:
+  //if(community.mods.contains(community.members[index]))
+  // reruns hence adding the user you want to the uIds set again hence the reason why a mod cannot be deselected
   int count=0;
   void addUid(String uId){
     setState(() {
@@ -28,6 +31,9 @@ class _AddModsState extends ConsumerState<AddMods> {
       uIds.remove(uId);
     });
   }
+  void saveModChanges(){
+    ref.read(communityControllerProvider.notifier).addMods(widget.name, uIds.toList(), context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +41,10 @@ class _AddModsState extends ConsumerState<AddMods> {
       child: Scaffold(appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              saveModChanges();
+
+            },
            icon:const Icon(Icons.done)
 ),
         ],
@@ -58,6 +67,11 @@ return ListView.builder(
 value: uIds.contains(user!.uId),
 //if the value property is true then it means the list tile will be checked
 onChanged: (value) {
+  if(value!){
+addUid(user.uId);
+  }else{
+    removUid(user.uId);
+  }
   
 },
       title: Text(user.name),

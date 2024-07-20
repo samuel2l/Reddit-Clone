@@ -132,6 +132,9 @@ showSnackBar(context, 'Community joined successfully');
 });
 
 }
-
+void addMods(String communityName,List<String> uIds,BuildContext context)async{
+final res=await _communityRespository.addMods(communityName, uIds);
+res.fold((l) => showSnackBar(context, l.message), (r) => Routemaster.of(context).pop());
+}
 }
 
