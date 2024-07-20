@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
+import 'package:routemaster/routemaster.dart';
 
 class ProfileScreen extends ConsumerWidget {
   final String uId;
   const ProfileScreen({super.key,required this.uId});
-
+ void navigateToEditUser(BuildContext context) {
+    Routemaster.of(context).push('/edit-profile/$uId');
+  }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user=ref.watch(userProvider);
+    // final user=ref.watch(userProvider);
     
     return SafeArea(child: 
     Scaffold(
@@ -25,32 +28,28 @@ class ProfileScreen extends ConsumerWidget {
                   fit: BoxFit.cover,
                   ),
                   ),
-
-Container(
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.all(20).copyWith(left: 70),
-child: CircleAvatar(
-                                backgroundImage: NetworkImage(user.dp),
-                                radius: 45,
+ Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: const EdgeInsets.all(20).copyWith(bottom: 70),
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(user.dp),
+                            radius: 45,
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          padding: const EdgeInsets.all(20),
+                          child: OutlinedButton(
+                            onPressed: (){},
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
-),
-                          
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    padding: const EdgeInsets.all(20),
-                    child: OutlinedButton(
-                                          onPressed: () {                                          
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(20),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(horizontal: 25),
-                                          ),
-                                          child: const Text('Edit Profile'),
-                                        ),
-                  ),
-
+                              padding: const EdgeInsets.symmetric(horizontal: 25),
+                            ),
+                            child: const Text('Edit Profile'),
+                          ),
+                        ),
                 ],
               ),
             ),

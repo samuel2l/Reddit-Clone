@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/home/delegates/search_community_delegates.dart';
 import 'package:reddit/features/home/drawers/community_list.dart';
-import 'package:reddit/features/home/drawers/user_profile.dart';
+import 'package:reddit/features/home/drawers/user_profile_drawer.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

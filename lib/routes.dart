@@ -34,4 +34,6 @@ final loggedInRoutes = RouteMap(routes: {
     ),
      '/u/:uId':(routeData)=> MaterialPage(child:ProfileScreen(uId: routeData.pathParameters['uId']!,),
     ),
+    '/edit-profile/:uId':(routeData)=> MaterialPage(child:AddMods(name: routeData.pathParameters['uId']!,),
+    ),
 });
