@@ -9,7 +9,6 @@ import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/community/repository/community_repo.dart';
 import 'package:reddit/features/models/community_model.dart';
 import 'package:reddit/providers/storage_repository_providers.dart';
-import 'package:reddit/type_defs.dart';
 import 'package:reddit/utils.dart';
 import 'package:routemaster/routemaster.dart';
 
