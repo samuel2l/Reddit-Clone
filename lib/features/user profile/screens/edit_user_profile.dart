@@ -71,7 +71,7 @@ void save(BuildContext context)  {
 
   @override
   Widget build(BuildContext context) {
-
+final isLoading=ref.watch(userProfileControllerProvider);
     return ref.watch(getUserDataProvider(widget.uId)).when(
           data: (data) {
 
@@ -89,7 +89,7 @@ void save(BuildContext context)  {
                     ),
                   ],
                 ),
-                body: Padding(
+                body: isLoading?const Center(child: CircularProgressIndicator()):Padding(
                         padding: const EdgeInsets.only(
                             left: 6, right: 6, top: 6),
                         child: Column(
