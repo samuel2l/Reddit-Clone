@@ -11,7 +11,6 @@ class ProfileScreen extends ConsumerWidget {
   }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final user=ref.watch(userProvider);
     
     return SafeArea(child: 
     Scaffold(
@@ -58,8 +57,6 @@ class ProfileScreen extends ConsumerWidget {
                     sliver: SliverList(
                       delegate: SliverChildListDelegate(
                         [
-
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
