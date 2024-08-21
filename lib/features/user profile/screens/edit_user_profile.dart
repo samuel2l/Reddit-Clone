@@ -40,6 +40,9 @@ late TextEditingController nameController;
       setState(() {
         bannerImg = File(res.files.first.path!);
       });
+          setState(() {
+        
+      });
     }
   }
 
@@ -48,6 +51,9 @@ late TextEditingController nameController;
     if (res != null) {
       setState(() {
         dp = File(res.files.first.path!);
+      });
+      setState(() {
+        
       });
     }
   }
@@ -58,7 +64,7 @@ late TextEditingController nameController;
 
   // }
 
-void save(BuildContext context)  {
+void save()  {
    ref.read(userProfileControllerProvider.notifier).editUserProfile(
     banner: bannerImg,
     dp: dp,
@@ -84,7 +90,7 @@ final isLoading=ref.watch(userProfileControllerProvider);
                   centerTitle: false,
                   actions: [
                     TextButton(
-                      onPressed: ()=>save(context),
+                      onPressed: ()=>save(),
                       child: const Text('Save'),
                     ),
                   ],

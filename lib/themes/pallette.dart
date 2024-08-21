@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+final themeNotifierProvider = StateNotifierProvider<ThemeNotifier, ThemeData>((ref) {
+  return ThemeNotifier();
+});
 
 class Pallete {
   // Colors
@@ -60,9 +63,12 @@ class ThemeNotifier extends StateNotifier<ThemeData> {
   ThemeMode get mode => _mode;
 
   void getTheme() async {
-    //  The Shared Preferences plugin in Flutter is used to store small amounts of data locally on a user's device, such as user settings, preferences, or simple state data. It allows you to save key-value pairs that persist across app sessions, making it useful for saving user preferences, login states, or any other simple data that needs to be retained between app launches. This data is stored in a way that is easily retrievable and does not require complex setup or access to a database.
+    //  The Shared Preferences plugin in Flutter is used to store small amounts of data locally on a user's device, such as user settings, preferences, or simple state data.
+    // It allows you to save key-value pairs that persist across app sessions, making it useful for saving user preferences, login states, or any other simple data that needs to be retained between app launches. 
+    //This data is stored in a way that is easily retrievable and does not require complex setup or access to a database.
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    //using the key, theme, we get the actual current theme of app
     final theme = prefs.getString('theme');
 
     if (theme == 'light') {
