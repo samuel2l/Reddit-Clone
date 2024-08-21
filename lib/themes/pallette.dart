@@ -59,7 +59,7 @@ class ThemeNotifier extends StateNotifier<ThemeData> {
         ) {
     getTheme();
   }
-
+//create a getter for private var mode
   ThemeMode get mode => _mode;
 
   void getTheme() async {

@@ -83,8 +83,6 @@ final isLoading=ref.watch(userProfileControllerProvider);
 
             return SafeArea(
               child: Scaffold(
-                backgroundColor:
-                    Pallete.darkModeAppTheme.dialogBackgroundColor,
                 appBar: AppBar(
                   title: const Text('Edit Profile'),
                   centerTitle: false,
