@@ -58,7 +58,16 @@ late TextEditingController nameController;
   // // trim() to remove any leading or trailing whitespace.
 
   // }
-  
+
+void save(BuildContext context)  {
+   ref.read(userProfileControllerProvider.notifier).editUserProfile(
+    banner: bannerImg,
+    dp: dp,
+    context: context,
+    name: nameController.text.trim(),
+  );
+
+}
 
 
   @override
