@@ -13,7 +13,7 @@ UserProfileRepository({required FirebaseFirestore firestore}) : _firestore = fir
 
 FutureVoid editUserProfile(UserModel user)async{
   try{
-    return right(_user.doc(user.name).update(user.toMap()));
+    return right(_user.doc(user.uId).update(user.toMap()));
 
   }on FirebaseException catch(e){
     throw e.message!;

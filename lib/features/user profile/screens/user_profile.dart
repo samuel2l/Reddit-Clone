@@ -23,7 +23,7 @@ class ProfileScreen extends ConsumerWidget {
               expandedHeight: 250,
               flexibleSpace: Stack(
                 children: [
-                  Positioned.fill(child: Image.network(user!.dp,
+                  Positioned.fill(child: Image.network(user!.banner,
                   fit: BoxFit.cover,
                   ),
                   ),

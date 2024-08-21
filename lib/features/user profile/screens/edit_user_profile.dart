@@ -53,9 +53,12 @@ late TextEditingController nameController;
     }
   }
 
-  void save(BuildContext context){
-    ref.read(userProfileControllerProvider.notifier).editUserProfile(banner: bannerImg, dp: dp, context: context, name: nameController.text.trim());
-  }
+  // void save(BuildContext context){
+  //   ref.read(userProfileControllerProvider.notifier).editUserProfile(banner: bannerImg, dp: dp, context: context, name: nameController.text.trim());
+  // // trim() to remove any leading or trailing whitespace.
+
+  // }
+  
 
 
   @override
@@ -63,6 +66,8 @@ late TextEditingController nameController;
 
     return ref.watch(getUserDataProvider(widget.uId)).when(
           data: (data) {
+            print('ei chale');
+            print(data);
             return SafeArea(
               child: Scaffold(
                 backgroundColor:
@@ -72,7 +77,7 @@ late TextEditingController nameController;
                   centerTitle: false,
                   actions: [
                     TextButton(
-                      onPressed: (){},
+                      onPressed: ()=>save(context),
                       child: const Text('Save'),
                     ),
                   ],
@@ -89,7 +94,7 @@ late TextEditingController nameController;
                                   Column(
                                     children: [
                                       GestureDetector(
-                                        onTap: pickBanner,
+                                        onTap: ()=>pickBanner(),
                                         child: DottedBorder(
                                           borderType: BorderType.RRect,
                                           radius: const Radius.circular(10),
@@ -128,7 +133,7 @@ late TextEditingController nameController;
                                     left: 20,
                                     bottom: 20,
                                     child: GestureDetector(
-                                      onTap: pickDp,
+                                      onTap:  ()=>pickDp(),
                                       child: CircleAvatar(
                                         backgroundImage: dp != null
                                             ? FileImage(dp!)
