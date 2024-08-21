@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/constants/constants.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
+import 'package:reddit/features/user%20profile/controller/user_profile_controller.dart';
 import 'package:reddit/themes/pallette.dart';
 import 'package:reddit/utils.dart';
 import 'package:routemaster/routemaster.dart';
@@ -50,6 +51,10 @@ late TextEditingController nameController;
         dp = File(res.files.first.path!);
       });
     }
+  }
+
+  void save(BuildContext context){
+    ref.read(userProfileControllerProvider.notifier).editUserProfile(banner: bannerImg, dp: dp, context: context, name: nameController.text.trim());
   }
 
 

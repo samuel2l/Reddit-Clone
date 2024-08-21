@@ -10,7 +10,7 @@ import 'package:reddit/utils.dart';
 import 'package:routemaster/routemaster.dart';
 final userProfileRepoProvider=Provider((ref) => UserProfileRepository(firestore: ref.watch(firestoreProvider)));
 
-final communityControllerProvider=StateNotifierProvider<UserProfileController,bool>((ref){
+final userProfileControllerProvider=StateNotifierProvider<UserProfileController,bool>((ref){
   return UserProfileController(userProfileRepository: ref.watch(userProfileRepoProvider), ref: ref,storageRepository: ref.watch(firebaseStorageProvider));
 });
 
