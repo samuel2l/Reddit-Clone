@@ -11,7 +11,7 @@ class UserProfileRepository{
 
 UserProfileRepository({required FirebaseFirestore firestore}) : _firestore = firestore;
 
-FutureVoid editCommunity(UserModel user)async{
+FutureVoid editUserProfile(UserModel user)async{
   try{
     return right(_user.doc(user.name).update(user.toMap()));
 
