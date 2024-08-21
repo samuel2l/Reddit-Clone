@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit/constants/constants.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/user%20profile/controller/user_profile_controller.dart';
-import 'package:reddit/themes/pallette.dart';
 import 'package:reddit/utils.dart';
 
 class EditProfile extends ConsumerStatefulWidget {
