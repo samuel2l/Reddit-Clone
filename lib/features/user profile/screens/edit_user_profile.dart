@@ -8,7 +8,6 @@ import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/user%20profile/controller/user_profile_controller.dart';
 import 'package:reddit/themes/pallette.dart';
 import 'package:reddit/utils.dart';
-import 'package:routemaster/routemaster.dart';
 
 class EditProfile extends ConsumerStatefulWidget {
   final String uId;
@@ -75,8 +74,7 @@ void save(BuildContext context)  {
 
     return ref.watch(getUserDataProvider(widget.uId)).when(
           data: (data) {
-            print('ei chale');
-            print(data);
+
             return SafeArea(
               child: Scaffold(
                 backgroundColor:
