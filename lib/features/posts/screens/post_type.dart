@@ -84,7 +84,7 @@ void sharePost() {
     final isTypeImage = widget.type == 'image';
     final isTypeText = widget.type == 'text';
     final isTypeLink = widget.type == 'link';
-    final currentTheme = ref.watch(themeNotifierProvider);
+
     final isLoading = ref.watch(postControllerProvider);
 
     return Scaffold(
