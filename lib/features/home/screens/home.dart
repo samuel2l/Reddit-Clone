@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reddit/constants/constants.dart';
 import 'package:reddit/features/auth/controller/auth_controller.dart';
 import 'package:reddit/features/home/delegates/search_community_delegates.dart';
 import 'package:reddit/features/home/drawers/community_list.dart';
@@ -78,10 +79,12 @@ showSearch(context: context, delegate: SearchCommunityDelegate(ref));
                   label: '',
                 ),
       ],
+      currentIndex: _page,
       activeColor: currTheme.iconTheme.color,
       backgroundColor: currTheme.colorScheme.background,
       onTap: onPageChanged,
       ),
+      body: tabWidgets[_page],
       );
   }
 }
