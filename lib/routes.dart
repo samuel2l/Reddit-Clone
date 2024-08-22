@@ -21,7 +21,7 @@ final loggedOutRoutes = RouteMap(routes: {
 //eg the home route,/, when logged out shows login screen 
 //but shows home screen when logged in
 final loggedInRoutes = RouteMap(routes: {
-  '/':(_)=>const MaterialPage(child:HomeScreen()),
+  '/':(_)=>const MaterialPage(child:Home()),
     '/create-community':(_)=>const MaterialPage(child:CreateCommunity()),
     //we will need to use dynamic routes to search for communities
     '/r/:name':(route)=> MaterialPage(child:CommunityScreen(
