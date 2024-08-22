@@ -8,6 +8,7 @@ import 'package:reddit/features/community/screens/edit_community.dart';
 import 'package:reddit/features/community/screens/mod_tools.dart';
 import 'package:reddit/features/home/screens/home.dart';
 import 'package:reddit/features/auth/screens/login.dart';
+import 'package:reddit/features/posts/screens/post_type.dart';
 import 'package:reddit/features/user%20profile/screens/edit_user_profile.dart';
 import 'package:reddit/features/user%20profile/screens/user_profile.dart';
 import 'package:routemaster/routemaster.dart';
@@ -37,4 +38,7 @@ final loggedInRoutes = RouteMap(routes: {
     ),
     '/edit-profile/:uId':(routeData)=> MaterialPage(child:EditProfile(uId: routeData.pathParameters['uId']!,),
     ),
+        '/add-post/:type':(routeData)=> MaterialPage(child:AddPostType(type: routeData.pathParameters['type']!,),
+    ),
+
 });
