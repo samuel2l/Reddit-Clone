@@ -144,7 +144,7 @@ class PostRepository {
       _users.doc(senderId).update({
         'awards': FieldValue.arrayRemove([award]),
       });
-      return right(_users.doc(post.uid).update({
+      return right(_users.doc(post.uId).update({
         'awards': FieldValue.arrayUnion([award]),
       }));
     } on FirebaseException catch (e) {

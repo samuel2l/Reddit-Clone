@@ -9,12 +9,12 @@ class Post {
   final String? link;
   final String? description;
   final String communityName;
-  final String communityProfilePic;
+  final String communityDp;
   final List<String> upvotes;
   final List<String> downvotes;
   final int commentCount;
   final String username;
-  final String uid;
+  final String uId;
   final String type;
   final DateTime createdAt;
   final List<String> awards;
@@ -24,12 +24,12 @@ class Post {
     this.link,
     this.description,
     required this.communityName,
-    required this.communityProfilePic,
+    required this.communityDp,
     required this.upvotes,
     required this.downvotes,
     required this.commentCount,
     required this.username,
-    required this.uid,
+    required this.uId,
     required this.type,
     required this.createdAt,
     required this.awards,
@@ -42,12 +42,12 @@ class Post {
     String? link,
     String? description,
     String? communityName,
-    String? communityProfilePic,
+    String? communityDp,
     List<String>? upvotes,
     List<String>? downvotes,
     int? commentCount,
     String? username,
-    String? uid,
+    String? uId,
     String? type,
     DateTime? createdAt,
     List<String>? awards,
@@ -58,12 +58,12 @@ class Post {
       link: link ?? this.link,
       description: description ?? this.description,
       communityName: communityName ?? this.communityName,
-      communityProfilePic: communityProfilePic ?? this.communityProfilePic,
+      communityDp: communityDp ?? this.communityDp,
       upvotes: upvotes ?? this.upvotes,
       downvotes: downvotes ?? this.downvotes,
       commentCount: commentCount ?? this.commentCount,
       username: username ?? this.username,
-      uid: uid ?? this.uid,
+      uId: uId ?? this.uId,
       type: type ?? this.type,
       createdAt: createdAt ?? this.createdAt,
       awards: awards ?? this.awards,
@@ -77,12 +77,12 @@ class Post {
       'link': link,
       'description': description,
       'communityName': communityName,
-      'communityProfilePic': communityProfilePic,
+      'communityDp': communityDp,
       'upvotes': upvotes,
       'downvotes': downvotes,
       'commentCount': commentCount,
       'username': username,
-      'uid': uid,
+      'uId': uId,
       'type': type,
       'createdAt': createdAt.millisecondsSinceEpoch,
       'awards': awards,
@@ -96,12 +96,12 @@ factory Post.fromMap(Map<String, dynamic> map) {
     link: map['link'] != null ? map['link'] as String : null,
     description: map['description'] != null ? map['description'] as String : null,
     communityName: map['communityName'] as String,
-    communityProfilePic: map['communityProfilePic'] as String,
+    communityDp: map['communityDp'] as String,
     upvotes: List<String>.from(map['upvotes'] as List),
     downvotes: List<String>.from(map['downvotes'] as List),
     commentCount: map['commentCount'] as int,
     username: map['username'] as String,
-    uid: map['uid'] as String,
+    uId: map['uId'] as String,
     type: map['type'] as String,
     createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int),
     awards: List<String>.from(map['awards'] as List),
@@ -114,7 +114,7 @@ factory Post.fromMap(Map<String, dynamic> map) {
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, link: $link, description: $description, communityName: $communityName, communityProfilePic: $communityProfilePic, upvotes: $upvotes, downvotes: $downvotes, commentCount: $commentCount, username: $username, uid: $uid, type: $type, createdAt: $createdAt, awards: $awards)';
+    return 'Post(id: $id, title: $title, link: $link, description: $description, communityName: $communityName, communityDp: $communityDp, upvotes: $upvotes, downvotes: $downvotes, commentCount: $commentCount, username: $username, uId: $uId, type: $type, createdAt: $createdAt, awards: $awards)';
   }
 
   @override
@@ -127,12 +127,12 @@ factory Post.fromMap(Map<String, dynamic> map) {
       other.link == link &&
       other.description == description &&
       other.communityName == communityName &&
-      other.communityProfilePic == communityProfilePic &&
+      other.communityDp == communityDp &&
       listEquals(other.upvotes, upvotes) &&
       listEquals(other.downvotes, downvotes) &&
       other.commentCount == commentCount &&
       other.username == username &&
-      other.uid == uid &&
+      other.uId == uId &&
       other.type == type &&
       other.createdAt == createdAt &&
       listEquals(other.awards, awards);
@@ -145,12 +145,12 @@ factory Post.fromMap(Map<String, dynamic> map) {
       link.hashCode ^
       description.hashCode ^
       communityName.hashCode ^
-      communityProfilePic.hashCode ^
+      communityDp.hashCode ^
       upvotes.hashCode ^
       downvotes.hashCode ^
       commentCount.hashCode ^
       username.hashCode ^
-      uid.hashCode ^
+      uId.hashCode ^
       type.hashCode ^
       createdAt.hashCode ^
       awards.hashCode;
