@@ -54,7 +54,8 @@ class _AddPostsState extends ConsumerState<AddPosts> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                color: currentTheme.backgroundColor,
+                color: currentTheme.colorScheme.background
+              ,
                 elevation: 16,
                 child: Center(
                   child: Icon(
@@ -74,7 +75,7 @@ class _AddPostsState extends ConsumerState<AddPosts> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                color: currentTheme.backgroundColor,
+                color: currentTheme.colorScheme.background,
                 elevation: 16,
                 child: Center(
                   child: Icon(
