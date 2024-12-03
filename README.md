@@ -1,16 +1,20 @@
-# news
+# Reddit Clone
 
-A new Flutter project.
+A feature-rich Reddit-like social media application where users can create communities, post content, interact with posts, and engage in discussions.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **User Authentication**: Secure login and registration.
+- **Community Management**: Create, join, and leave communities.
+- **Posts**: Users can create, view, edit, and delete posts.
+- **Comments**: Nested comment system for post discussions.
+- **Voting**: Upvote and downvote functionality for posts and comments.
+- **Search**: Search for posts and communities.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Frontend**: Flutter
+- **Backend**: Firebase (Authentication, Firestore, and Storage)
+- **State Management**: Riverpod
+- **Database**: Firebase Firestore
